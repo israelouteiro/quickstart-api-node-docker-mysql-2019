@@ -1,0 +1,38 @@
+version: '3'
+services:
+    api:
+        build: ./
+        environment:
+            - loglevel=none
+            - NODE_ENV=development 
+            - MYSQL_HOST=mysql
+            - MYSQL_DATABASE=nobli
+            - MYSQL_USER=nobli
+            - MYSQL_PASSWORD=nobli@123
+            - PORT=3000
+            - API_SECRET=<api_key_goes_here>
+            - APPLICATION_NAME=NodeApi
+            - APPLICATION_URL=http://localhost:3001/ 
+            - SMTP_EMAIL=
+            - SMTP_SENDER=
+            - SMTP_PASSWORD=
+            - SMTP_SERVICE=gmail
+        volumes:
+            - ./:/usr/src/app 
+        working_dir: /usr/src/app
+        command: bash -c "npm install &&  npm run start-docker"
+        ports:
+            - 3000:3000 
+        depends_on:
+            - mysql  
+    mysql:
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: nobli@123
+            MYSQL_PASSWORD: nobli@123
+            MYSQL_DATABASE: nobli
+            MYSQL_USER: nobli
+        ports:
+            - 3306:3366
