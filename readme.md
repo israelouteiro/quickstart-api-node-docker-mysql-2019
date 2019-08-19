@@ -79,7 +79,7 @@ if you dont change `PORT` enviroment on docker-compose your application your run
 
 ***Notes***
 
-use `src/example` as example to create others controllers 
+use `src/found` as example to create others controllers 
 
 [http://israelouteiro.com](israelouteiro@2019)
 
