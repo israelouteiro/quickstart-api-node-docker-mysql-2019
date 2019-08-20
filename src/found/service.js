@@ -14,7 +14,7 @@ class FoundService {
 	read(req){ 
 		let _id = req.params.id;  
 		return new Promise(async (resolve, reject) => {   
-			let result = await Found.findById(_id);	
+			let result = await Found.findByPk(_id);	
 			resolve({ success: true, register: result }); 
 		}) 
 	}
